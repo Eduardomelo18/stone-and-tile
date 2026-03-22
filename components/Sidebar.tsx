@@ -22,7 +22,7 @@ export default function Sidebar() {
     <>
       {/* Mobile top bar */}
       <div className="lg:hidden flex items-center justify-between bg-slate-900 text-white px-4 h-14 sticky top-0 z-40">
-        <span className="font-bold text-base">Stone & Tile</span>
+        <span className="font-bold text-base">Northern Beaches</span>
         <button
           onClick={() => setOpen(!open)}
           className="text-slate-300 hover:text-white p-2 rounded"
@@ -51,10 +51,11 @@ export default function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="h-14 flex items-center px-5 border-b border-slate-700">
-          <div>
-            <div className="font-bold text-white text-sm">Stone & Tile</div>
-            <div className="text-slate-400 text-xs">Business Control</div>
+        <div className="flex flex-col items-center px-5 py-4 border-b border-slate-700 gap-2">
+          <img src="/logo.png" alt="Northern Beaches Stone & Tile Care" className="w-20 h-20 object-contain" />
+          <div className="text-center">
+            <div className="font-bold text-white text-xs leading-tight">Northern Beaches</div>
+            <div className="text-slate-400 text-xs">Stone & Tile Care</div>
           </div>
         </div>
 
@@ -85,7 +86,7 @@ export default function Sidebar() {
 
         {/* Footer */}
         <div className="p-4 border-t border-slate-700">
-          <div className="text-xs text-slate-500">Stone & Tile Care v1.0</div>
+          <div className="text-xs text-slate-500">NB Stone & Tile Care v1.0</div>
         </div>
       </aside>
     </>

@@ -5,12 +5,12 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
 export const metadata: Metadata = {
-  title: "Stone & Tile Care",
-  description: "Business control app for stone and tile care operations",
+  title: "Northern Beaches Stone & Tile Care",
+  description: "Business control app for Northern Beaches Stone & Tile Care",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "S&T Care",
+    title: "NB Stone & Tile",
   },
   formatDetection: {
     telephone: false,

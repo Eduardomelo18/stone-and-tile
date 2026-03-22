@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Stone & Tile Care',
-    short_name: 'S&T Care',
+    name: 'Northern Beaches Stone & Tile Care',
+    short_name: 'NB Stone & Tile',
     description: 'Business control app — jobs, costs, and profit tracking',
     start_url: '/dashboard',
     display: 'standalone',
