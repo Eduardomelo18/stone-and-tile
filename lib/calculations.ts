@@ -93,9 +93,9 @@ export function calcYearlyOverhead(expenses: CompanyExpense[]): number {
   return calcMonthlyOverhead(expenses) * 12
 }
 
-// GST is 10% in Australia. If invoice is GST-inclusive, GST = invoice / 11
+// GST is 10% in Australia. Added on top of the ex-GST price.
 export function calcGST(invoiceAmount: number): number {
-  return invoiceAmount / 11
+  return invoiceAmount * 0.10
 }
 
 export function formatCurrency(amount: number): string {

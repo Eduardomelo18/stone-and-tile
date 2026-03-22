@@ -381,8 +381,9 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           <div className="bg-slate-900 text-white rounded-xl p-5 space-y-3">
             <h3 className="font-bold text-base">Job Profit Summary</h3>
             <div className="space-y-2">
-              <SummaryRow label="Invoice Amount (incl. GST)" value={formatCurrency(job.invoice_amount)} />
-              <SummaryRow label="GST Collected (10%)" value={formatCurrency(gst)} />
+              <SummaryRow label="Job Price (ex-GST)" value={formatCurrency(job.invoice_amount)} />
+              <SummaryRow label="GST (10%)" value={formatCurrency(gst)} />
+              <SummaryRow label="Total Invoice (incl. GST)" value={formatCurrency(job.invoice_amount + gst)} />
               <SummaryRow label="Labour" value={`-${formatCurrency(totalLabour)}`} />
               <SummaryRow label="Materials" value={`-${formatCurrency(totalMaterials)}`} />
               <SummaryRow label="Sealers" value={`-${formatCurrency(totalSealer)}`} />
