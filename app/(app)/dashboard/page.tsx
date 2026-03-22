@@ -64,6 +64,15 @@ export default function DashboardPage() {
         </div>
       </div>
 
+      {/* GST */}
+      <div>
+        <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">GST (10%)</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <StatCard label="GST Collected (All Time)" value={formatCurrency(stats.total_gst)} sub="from completed jobs" color="blue" />
+          <StatCard label="GST This Month" value={formatCurrency(stats.gst_this_month)} sub="from completed jobs" color="blue" />
+        </div>
+      </div>
+
       {/* Overhead */}
       <div>
         <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Overheads</h2>

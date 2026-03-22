@@ -1,5 +1,5 @@
 import { createServerClient } from '@/lib/supabase'
-import { calcMonthlyOverhead, calcYearlyOverhead, buildJobWithCosts, calcTotalDirectCost } from '@/lib/calculations'
+import { calcMonthlyOverhead, calcYearlyOverhead, buildJobWithCosts, calcTotalDirectCost, calcGST } from '@/lib/calculations'
 import type { CompanyExpense, JobCosts } from '@/lib/types'
 
 export async function GET() {
@@ -56,6 +56,9 @@ export async function GET() {
   const weekJobs = completedJobs.filter(j => j.date >= weekStartStr)
   const monthJobs = completedJobs.filter(j => j.date >= monthStartStr)
 
+  const totalGST = calcGST(totalRevenue)
+  const gstThisMonth = calcGST(monthJobs.reduce((s, j) => s + (j.invoice_amount || 0), 0))
+
   return Response.json({
     total_revenue: totalRevenue,
     total_direct_costs: totalDirectCosts,
@@ -68,5 +71,7 @@ export async function GET() {
     jobs_unpaid: jobs.filter(j => j.payment_status === 'unpaid').length,
     profit_this_week: weekJobs.reduce((s, j) => s + (j.invoice_amount || 0), 0),
     profit_this_month: monthJobs.reduce((s, j) => s + (j.invoice_amount || 0), 0),
+    total_gst: totalGST,
+    gst_this_month: gstThisMonth,
   })
 }

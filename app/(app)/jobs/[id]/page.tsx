@@ -6,7 +6,7 @@ import {
   calcLabourTotal, calcMaterialsTotal, calcSealerTotal,
   calcTravelTotal, calcEquipmentTotal, calcOtherTotal,
   calcTotalDirectCost, calcGrossProfit, calcGrossMarginPct,
-  formatCurrency, formatPct
+  calcGST, formatCurrency, formatPct
 } from '@/lib/calculations'
 import { jobStatusBadge, paymentStatusBadge } from '@/components/ui/Badge'
 import type {
@@ -176,6 +176,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
   const totalDirect = calcTotalDirectCost(costs)
   const grossProfit = calcGrossProfit(job.invoice_amount, totalDirect)
   const marginPct = calcGrossMarginPct(job.invoice_amount, grossProfit)
+  const gst = calcGST(job.invoice_amount)
 
   const client = job.client as Client | null
   const inputCls = "w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"
@@ -380,7 +381,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
           <div className="bg-slate-900 text-white rounded-xl p-5 space-y-3">
             <h3 className="font-bold text-base">Job Profit Summary</h3>
             <div className="space-y-2">
-              <SummaryRow label="Invoice Amount" value={formatCurrency(job.invoice_amount)} />
+              <SummaryRow label="Invoice Amount (incl. GST)" value={formatCurrency(job.invoice_amount)} />
+              <SummaryRow label="GST Collected (10%)" value={formatCurrency(gst)} />
               <SummaryRow label="Labour" value={`-${formatCurrency(totalLabour)}`} />
               <SummaryRow label="Materials" value={`-${formatCurrency(totalMaterials)}`} />
               <SummaryRow label="Sealers" value={`-${formatCurrency(totalSealer)}`} />

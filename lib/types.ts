@@ -152,4 +152,6 @@ export interface DashboardStats {
   jobs_unpaid: number
   profit_this_week: number
   profit_this_month: number
+  total_gst: number
+  gst_this_month: number
 }
